@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import Modelo.ConexionBD;
 
 /**
  *
@@ -24,7 +25,7 @@ public class EncargadoProyecto_DAO_Implemeents implements EncargadoProyecto_DAO 
         EncargadoProyectoVO encargadoProyectoRecuperdo = new EncargadoProyectoVO();
         Connection con = null;
         Statement stm = null;
-        modelo.ConexionBD cc = new modelo.ConexionBD();
+        ConexionBD cc = new ConexionBD();
         ResultSet rs = null;
         try {
             con = cc.conectarMySQL();
@@ -62,7 +63,7 @@ public class EncargadoProyecto_DAO_Implemeents implements EncargadoProyecto_DAO 
 
         Statement stm = null;
         Connection con = null;
-        ConexionBD cc = new modelo.ConexionBD();
+        ConexionBD cc = new ConexionBD();
         try {
             con = cc.conectarMySQL();
             stm = con.createStatement();
