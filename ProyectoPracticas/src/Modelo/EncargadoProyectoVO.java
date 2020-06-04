@@ -16,6 +16,9 @@ public class EncargadoProyectoVO {
     private String idEncargadoProyecto;
     private String nombre, cargo, correoElectronico;
 
+    public EncargadoProyectoVO() {
+    }
+
     public EncargadoProyectoVO(String idEncargadoProyecto, String nombre, String cargo, String correoElectronico) {
         this.idEncargadoProyecto = idEncargadoProyecto;
         this.nombre = nombre;
