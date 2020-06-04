@@ -7,7 +7,7 @@ package Modelo;
 
 /**
  *
- * @author Abelardo
+ * @author ALDO
  */
 public class ExpedienteVO {
     private int idExpediente;

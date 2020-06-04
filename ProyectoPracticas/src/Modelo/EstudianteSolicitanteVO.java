@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Abelardo
+ * @author Aldo
  */
 public class EstudianteSolicitanteVO {
     
