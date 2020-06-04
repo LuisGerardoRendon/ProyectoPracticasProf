@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.Objects;
+
 /**
  *
  * @author Daniel Pale
@@ -18,7 +20,7 @@ public class EstudianteVO {
         this.correoElectronico = correoElectronico;
         this.status = status;
     }
-
+    
     public String getMatricula() {
         return matricula;
     }
@@ -63,4 +65,37 @@ public class EstudianteVO {
     public String toString() {
         return "EstudianteVO{" + "matricula=" + matricula + ", contrasenia=" + contrasenia + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + ", status=" + status + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final EstudianteVO other = (EstudianteVO) obj;
+        if (!Objects.equals(this.matricula, other.matricula)) {
+            return false;
+        }
+        if (!Objects.equals(this.contrasenia, other.contrasenia)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.correoElectronico, other.correoElectronico)) {
+            return false;
+        }
+        if (this.status != other.status) {
+            return false;
+        }
+        return true;
+    }   
 }
