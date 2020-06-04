@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Aldo
  */
 public class EncargadoProyectoVO {
     private String idEncargadoProyecto;

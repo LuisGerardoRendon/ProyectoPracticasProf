@@ -29,7 +29,7 @@ public class ReporteVO {
         this.fechaFin = fechaFin;
         this.idExpediente = idExpediente;
     }
-
+    
     public void setNumero(int numero) {
         this.numero = numero;
     }
