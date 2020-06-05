@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Abelardo
+ * @author ALDO
  */
 public class DocumentoVO {
     private String fechaDeAlmacen;
@@ -23,6 +23,14 @@ public class DocumentoVO {
         this.nombreDocumento = nombreDocumento;
         this.idExpediente = idExpediente;
     }
+    
+    public DocumentoVO(String fechaDeAlmacen, String documento, int idExpediente) {
+        this.fechaDeAlmacen = fechaDeAlmacen;
+        this.documento = documento;
+        this.nombreDocumento = "null";
+        this.idExpediente = idExpediente;
+    }
+    
 
     @Override
     public int hashCode() {
