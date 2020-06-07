@@ -3,23 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package Modelo;
+
+import java.io.File;
 
 /**
  *
  * @author ALDO
  */
 public class ReporteVO {
-  private int numero;
-  private int horasReportadas; 
-  private String fechaCarga;
-  private String estado;
-  private String reporte;
-  private String fechaInicio;
-  private String fechaFin;
-  private int idExpediente;
 
-    public ReporteVO(int numero, int horasReportadas, String fechaCarga, String estado, String reporte, String fechaInicio, String fechaFin, int idExpediente) {
+    private int numero;
+    private int horasReportadas;
+    private String fechaCarga;
+    private String estado;
+    private File reporte;
+    private String fechaInicio;
+    private String fechaFin;
+    private int idExpediente;
+
+    public ReporteVO(int numero, int horasReportadas, String fechaCarga, String estado, File reporte, String fechaInicio, String fechaFin, int idExpediente) {
         this.numero = numero;
         this.horasReportadas = horasReportadas;
         this.fechaCarga = fechaCarga;
@@ -29,7 +32,18 @@ public class ReporteVO {
         this.fechaFin = fechaFin;
         this.idExpediente = idExpediente;
     }
-    
+
+    public ReporteVO(int numero, int horasReportadas, String fechaCarga) {
+        this.numero = numero;
+        this.horasReportadas = horasReportadas;
+        this.fechaCarga = fechaCarga;
+        estado = null;
+        reporte = null;
+        fechaInicio = null;
+        fechaFin = null;
+        idExpediente = 0;
+    }
+
     public void setNumero(int numero) {
         this.numero = numero;
     }
@@ -46,7 +60,7 @@ public class ReporteVO {
         this.estado = estado;
     }
 
-    public void setReporte(String reporte) {
+    public void setReporte(File reporte) {
         this.reporte = reporte;
     }
 
@@ -61,8 +75,7 @@ public class ReporteVO {
     public void setIdExpediente(int idExpediente) {
         this.idExpediente = idExpediente;
     }
-    
-    
+
     public int getNumero() {
         return numero;
     }
@@ -79,7 +92,7 @@ public class ReporteVO {
         return estado;
     }
 
-    public String getReporte() {
+    public File getReporte() {
         return reporte;
     }
 
@@ -94,6 +107,5 @@ public class ReporteVO {
     public int getIdExpediente() {
         return idExpediente;
     }
-  
-  
+
 }

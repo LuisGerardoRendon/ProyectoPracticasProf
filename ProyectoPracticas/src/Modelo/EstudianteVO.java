@@ -11,10 +11,10 @@ public class EstudianteVO {
   private String contrasenia;
   private String nombre;
   private String correoElectronico;
-  private boolean status;
+  private String status;
 
-    public EstudianteVO(String matricula, String contrasenia, String nombre, String correoElectronico, boolean status) {
-        this.matricula = matricula;
+    public EstudianteVO(String matricula, String contrasenia, String nombre, String correoElectronico, String status) { // Se cambio el status a string
+        this.matricula = matricula;                                                                                     // porque puede ser Asignado, Sin Asignar, Aprobado
         this.contrasenia = contrasenia;
         this.nombre = nombre;
         this.correoElectronico = correoElectronico;
@@ -53,11 +53,11 @@ public class EstudianteVO {
         this.correoElectronico = correoElectronico;
     }
 
-    public boolean isStatus() {
+    public String isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -93,7 +93,7 @@ public class EstudianteVO {
         if (!Objects.equals(this.correoElectronico, other.correoElectronico)) {
             return false;
         }
-        if (this.status != other.status) {
+        if (!this.status.equals(other.status)) {
             return false;
         }
         return true;

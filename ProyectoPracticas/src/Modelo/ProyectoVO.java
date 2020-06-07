@@ -12,11 +12,11 @@ public class ProyectoVO {
     private String descripcion;
     private int capacidadEstudiantes;
     private int numEstudiantesAsignados;
-    private boolean status;
+    private String status; //Se cambio status por que puede ser "Asignado", "Sin Asignar" y "Concluido".
     private String idOrganizacion;
     private String idEncargadoProyecto;
 
-    public ProyectoVO(String idProyecto, String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, boolean status, String idOrganizacion, String idEncargadoProyecto) {
+    public ProyectoVO(String idProyecto, String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, String status, String idOrganizacion, String idEncargadoProyecto) {
         this.idProyecto = idProyecto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -27,7 +27,7 @@ public class ProyectoVO {
         this.idEncargadoProyecto = idEncargadoProyecto;
     }
 
-    public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, boolean status, String idOrganizacion, String idEncargadoProyecto) {
+    public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, String status, String idOrganizacion, String idEncargadoProyecto) {
         this.idProyecto="null";
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -37,6 +37,10 @@ public class ProyectoVO {
         this.idOrganizacion = idOrganizacion;
         this.idEncargadoProyecto = idEncargadoProyecto;
     }
+
+    public ProyectoVO() {
+    }
+    
     
     public String getIdProyecto() {
         return idProyecto;
@@ -78,11 +82,11 @@ public class ProyectoVO {
         this.numEstudiantesAsignados = numEstudiantesAsignados;
     }
 
-    public boolean isStatus() {
+    public String isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -137,7 +141,7 @@ public class ProyectoVO {
         if (this.numEstudiantesAsignados != other.numEstudiantesAsignados) {
             return false;
         }
-        if (this.status != other.status) {
+        if (!this.status.equals(other.status)) {
             return false;
         }
         if (!Objects.equals(this.idOrganizacion, other.idOrganizacion)) {
