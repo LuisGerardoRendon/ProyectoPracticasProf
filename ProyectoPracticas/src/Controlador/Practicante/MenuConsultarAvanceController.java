@@ -77,6 +77,7 @@ public class MenuConsultarAvanceController implements Initializable {
     private void regresar(ActionEvent event) {
         
     }
+    
     public void inicializarTabla(){
         //this.comlumnaCursos.setCellValueFactory(new PropertyValueFactory("nombre"));
         this.ColumnaHorasCubiertas.setCellValueFactory(new PropertyValueFactory("horasReportadas"));
