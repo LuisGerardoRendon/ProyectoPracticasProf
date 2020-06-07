@@ -5,20 +5,21 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Practicante.LlenarInformacionReporteController">
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Controlador.Practicante.SubirNuevoReporteController">
    <children>
-      <Label layoutX="263.0" layoutY="45.0" text="Subir nuevo Reporte" />
-      <Label layoutX="125.0" layoutY="108.0" text="Numero:" />
-      <Label layoutX="125.0" layoutY="141.0" text="Horas Reportadas:" />
-      <Label layoutX="125.0" layoutY="172.0" text="Fecha de Carga:" />
-      <Label layoutX="125.0" layoutY="201.0" text="Fecha de inicio:" />
-      <Label layoutX="125.0" layoutY="234.0" text="Fehca de fin:" />
-      <TextField layoutX="243.0" layoutY="103.0" />
-      <TextField layoutX="243.0" layoutY="136.0" />
-      <TextField layoutX="243.0" layoutY="167.0" />
-      <TextField layoutX="243.0" layoutY="196.0" />
-      <TextField layoutX="243.0" layoutY="229.0" />
-      <Button layoutX="274.0" layoutY="277.0" mnemonicParsing="false" text="Cargar Reporte" />
-      <Button layoutX="172.0" layoutY="278.0" mnemonicParsing="false" text="Cancelar" />
+      <Label layoutX="230.0" layoutY="42.0" text="SUBIR NUEVO REPORTE" />
+      <Label layoutX="159.0" layoutY="128.0" text="Numero:" />
+      <Label layoutX="155.0" layoutY="160.0" text="Horas reportadas" />
+      <Label layoutX="159.0" layoutY="192.0" text="Fecha de Carga:" />
+      <Label layoutX="160.0" layoutY="230.0" text="Fecha de Inicio:" />
+      <Label layoutX="159.0" layoutY="262.0" text="Fecha de Fin:" />
+      <TextField fx:id="txtFieldNumero" layoutX="283.0" layoutY="124.0" />
+      <TextField fx:id="txtFieldHorasReportas" layoutX="283.0" layoutY="156.0" />
+      <TextField fx:id="txtFieldFechaCarga" layoutX="283.0" layoutY="188.0" />
+      <TextField fx:id="txtFieldFechaInicio" layoutX="283.0" layoutY="226.0" />
+      <TextField fx:id="txtFieldFechaFin" layoutX="283.0" layoutY="258.0" />
+      <Button fx:id="botonCancelar" layoutX="157.0" layoutY="318.0" mnemonicParsing="false" onAction="#cancelar" text="CANCELAR" />
+      <Button fx:id="botonCargarReporte" layoutX="372.0" layoutY="318.0" mnemonicParsing="false" onAction="#cargarReporte" text="CARGAR REPORTE" />
    </children>
 </AnchorPane>
