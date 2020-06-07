@@ -7,7 +7,7 @@ package Modelo;
 
 /**
  *
- * @author Abelardo
+ * @author ALDO
  */
 public class CoordinadorVO {
     private String usuario;
@@ -20,6 +20,7 @@ public class CoordinadorVO {
 
     public CoordinadorVO(String contraseña) {
         this.contraseña = contraseña;
+        this.usuario="null";
     }
 
     @Override

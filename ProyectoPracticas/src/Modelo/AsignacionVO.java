@@ -29,15 +29,19 @@ public class AsignacionVO {
         this.matriculaProfesor = matriculaProfesor;
         this.matriculaEstudiante = matriculaEstudiante;
     }
-
-    public AsignacionVO(String preriodo, String nrcCurso, float progreso, int idProyecto, String matriculaProfesor, String matriculaEstudiante) {
+    
+     public AsignacionVO( String preriodo, String nrcCurso, float progreso, int idProyecto, String matriculaProfesor, String matriculaEstudiante) {
+   
         this.preriodo = preriodo;
         this.nrcCurso = nrcCurso;
         this.progreso = progreso;
         this.idProyecto = idProyecto;
         this.matriculaProfesor = matriculaProfesor;
         this.matriculaEstudiante = matriculaEstudiante;
+        this.idAsignacion =0;
     }
+
+    
 
     @Override
     public int hashCode() {
