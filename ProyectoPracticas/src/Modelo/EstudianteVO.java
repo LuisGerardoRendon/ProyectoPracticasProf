@@ -1,17 +1,20 @@
 package Modelo;
 
 import java.util.Objects;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Daniel Pale
  */
 public class EstudianteVO {
-  private String matricula;
-  private String contrasenia;
-  private String nombre;
-  private String correoElectronico;
-  private String status;
+
+    private String matricula;
+    private String contrasenia;
+    private String nombre;
+    private String correoElectronico;
+    private String status;
 
     public EstudianteVO(String matricula, String contrasenia, String nombre, String correoElectronico, String status) { // Se cambio el status a string
         this.matricula = matricula;                                                                                     // porque puede ser Asignado, Sin Asignar, Aprobado
@@ -20,7 +23,20 @@ public class EstudianteVO {
         this.correoElectronico = correoElectronico;
         this.status = status;
     }
-    
+
+    public EstudianteVO() {
+        this.matricula = "null";                                                                                     // porque puede ser Asignado, Sin Asignar, Aprobado
+        this.contrasenia = "null";
+        this.nombre = "null";
+        this.correoElectronico = "null";
+        this.status = "null";
+    }
+
+    public EstudianteVO(String matricula, String nombre) {
+        this.matricula = matricula;
+        this.nombre = nombre;
+    }
+
     public String getMatricula() {
         return matricula;
     }
@@ -61,6 +77,13 @@ public class EstudianteVO {
         this.status = status;
     }
 
+    public ObservableList<EstudianteVO> obtenerEstudiantes() {
+        Estudiante_DAO_Implements estudianteDAOImp = new Estudiante_DAO_Implements();
+        ObservableList<EstudianteVO> obs = FXCollections.observableArrayList();
+        obs = estudianteDAOImp.recuperaNombreMatricula();
+        return obs;
+    }
+
     @Override
     public String toString() {
         return "EstudianteVO{" + "matricula=" + matricula + ", contrasenia=" + contrasenia + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + ", status=" + status + '}';
@@ -97,5 +120,5 @@ public class EstudianteVO {
             return false;
         }
         return true;
-    }   
+    }
 }

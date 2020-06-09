@@ -105,7 +105,7 @@ public class Estudiante_DAO_Implements implements Estudiante_DAO {
                 String idEncargadoProyecto = rs.getInt("idEncargadoProyecto")+"";
                 
                 //(String idProyecto, String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, boolean status, String idOrganizacion, String idEncargadoProyecto)
-                proyectoRecuperado = new ProyectoVO(nombre,descripcion,capacidadEstudiantes,numEstudiantesAsignados,status,idOrganizacion,idEncargadoProyecto);
+                //proyectoRecuperado = new ProyectoVO(nombre,descripcion,capacidadEstudiantes,numEstudiantesAsignados,status,idOrganizacion,idEncargadoProyecto);
                 
                 
             }
@@ -120,6 +120,35 @@ public class Estudiante_DAO_Implements implements Estudiante_DAO {
 
         }
         return proyectoRecuperado;
+    }
+    
+    @Override
+    public ObservableList<EstudianteVO> recuperaNombreMatricula(){
+       Connection con = null;
+        Statement stm = null;
+        ResultSet rs = null;
+        String sql = "SELECT matricula, nombre FROM estudiante WHERE status='Sin asignar'";
+
+        ObservableList<EstudianteVO> obs = FXCollections.observableArrayList();
+
+        try {
+            con = new ConexionBD().conectarMySQL();
+            stm = con.createStatement();
+            rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                String matricula = rs.getString("matricula");
+                String nombre = rs.getString("nombre");
+                EstudianteVO e = new EstudianteVO(matricula, nombre);
+                obs.add(e);
+            }
+            stm.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println("ERROR. Clase Producto_DAO_Imp, metodo ReadAll");
+            e.printStackTrace();
+        }
+        return obs;
     }
 
 }

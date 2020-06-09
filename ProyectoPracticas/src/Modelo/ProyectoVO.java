@@ -1,22 +1,25 @@
 package Modelo;
 
 import java.util.Objects;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Daniel Pale
  */
 public class ProyectoVO {
-    private String idProyecto;
+
+    private int idProyecto;
     private String nombre;
     private String descripcion;
     private int capacidadEstudiantes;
     private int numEstudiantesAsignados;
     private String status; //Se cambio status por que puede ser "Asignado", "Sin Asignar" y "Concluido".
-    private String idOrganizacion;
-    private String idEncargadoProyecto;
+    private int idOrganizacion;
+    private int idEncargadoProyecto;
 
-    public ProyectoVO(String idProyecto, String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, String status, String idOrganizacion, String idEncargadoProyecto) {
+    public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, int idProyecto, String status, int idOrganizacion, int idEncargadoProyecto) {
         this.idProyecto = idProyecto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -27,8 +30,8 @@ public class ProyectoVO {
         this.idEncargadoProyecto = idEncargadoProyecto;
     }
 
-    public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, String status, String idOrganizacion, String idEncargadoProyecto) {
-        this.idProyecto="null";
+    public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, String status, int idOrganizacion, int idEncargadoProyecto) {
+        this.idProyecto = 0;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.capacidadEstudiantes = capacidadEstudiantes;
@@ -38,15 +41,19 @@ public class ProyectoVO {
         this.idEncargadoProyecto = idEncargadoProyecto;
     }
 
+    public ProyectoVO(String nombre, int capacidadEstudiantes) {
+        this.nombre = nombre;
+        this.capacidadEstudiantes = capacidadEstudiantes;
+    }
+
     public ProyectoVO() {
     }
-    
-    
-    public String getIdProyecto() {
+
+    public int getIdProyecto() {
         return idProyecto;
     }
 
-    public void setIdProyecto(String idProyecto) {
+    public void setIdProyecto(int idProyecto) {
         this.idProyecto = idProyecto;
     }
 
@@ -90,20 +97,27 @@ public class ProyectoVO {
         this.status = status;
     }
 
-    public String getIdOrganizacion() {
+    public int getIdOrganizacion() {
         return idOrganizacion;
     }
 
-    public void setIdOrganizacion(String idOrganizacion) {
+    public void setIdOrganizacion(int idOrganizacion) {
         this.idOrganizacion = idOrganizacion;
     }
 
-    public String getIdEncargadoProyecto() {
+    public int getIdEncargadoProyecto() {
         return idEncargadoProyecto;
     }
 
-    public void setIdEncargadoProyecto(String idEncargadoProyecto) {
+    public void setIdEncargadoProyecto(int idEncargadoProyecto) {
         this.idEncargadoProyecto = idEncargadoProyecto;
+    }
+
+    public ObservableList<ProyectoVO> obtenerProyectos() {
+        ProyectoDAO_Implements proyectoDAOImp = new ProyectoDAO_Implements();
+        ObservableList<ProyectoVO> obs = FXCollections.observableArrayList();
+        obs = proyectoDAOImp.recuperaNombreCupo();
+        return obs;
     }
 
     @Override
@@ -153,4 +167,3 @@ public class ProyectoVO {
         return true;
     }
 }
-

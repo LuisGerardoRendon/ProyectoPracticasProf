@@ -15,4 +15,5 @@ import javafx.collections.ObservableList;
 public interface Estudiante_DAO {
     public ObservableList<ReporteVO> recuperarReportes(String periodo, String matricula);
     public ProyectoVO recuperarProyecto(String periodo, String matricula);
+    public ObservableList<EstudianteVO> recuperaNombreMatricula();
 } 
