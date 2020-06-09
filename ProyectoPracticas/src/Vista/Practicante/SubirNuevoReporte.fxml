@@ -5,8 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Controlador.Practicante.SubirNuevoReporteController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.Practicante.SubirNuevoReporteController">
    <children>
       <Label layoutX="230.0" layoutY="42.0" text="SUBIR NUEVO REPORTE" />
       <Label layoutX="159.0" layoutY="128.0" text="Numero:" />
@@ -19,7 +18,8 @@
       <TextField fx:id="txtFieldFechaCarga" layoutX="283.0" layoutY="188.0" />
       <TextField fx:id="txtFieldFechaInicio" layoutX="283.0" layoutY="226.0" />
       <TextField fx:id="txtFieldFechaFin" layoutX="283.0" layoutY="258.0" />
-      <Button fx:id="botonCancelar" layoutX="157.0" layoutY="318.0" mnemonicParsing="false" onAction="#cancelar" text="CANCELAR" />
-      <Button fx:id="botonCargarReporte" layoutX="372.0" layoutY="318.0" mnemonicParsing="false" onAction="#cargarReporte" text="CARGAR REPORTE" />
+      <Button fx:id="botonCancelar" layoutX="164.0" layoutY="344.0" mnemonicParsing="false" onAction="#cancelar" text="CANCELAR" />
+      <Button fx:id="botonCargarReporte" layoutX="375.0" layoutY="344.0" mnemonicParsing="false" onAction="#cargarReporte" text="CARGAR REPORTE" />
+      <Button fx:id="botonImportarArchivo" layoutX="293.0" layoutY="294.0" mnemonicParsing="false" onAction="#importarArchivo" text="IMPORTAR ARCHIVO" />
    </children>
 </AnchorPane>

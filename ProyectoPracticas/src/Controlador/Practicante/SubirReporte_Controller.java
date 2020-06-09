@@ -5,6 +5,9 @@
  */
 package Controlador.Practicante;
 
+import Modelo.EstudianteVO;
+import Modelo.Estudiante_DAO_Implements;
+import Modelo.ProyectoVO;
 import Modelo.ReporteVO;
 import java.io.IOException;
 import java.net.URL;
@@ -58,25 +61,44 @@ public class SubirReporte_Controller implements Initializable {
     @FXML
     private TableColumn<ReporteVO, Integer> columnaFechaCarga;
     
-    
-    ObservableList<ReporteVO> reportes = FXCollections.observableArrayList();
-    Reporte_DAO_Implements reporte_DAO = new Reporte_DAO_Implements();
+    public EstudianteVO estudianteUsuario = new EstudianteVO("ZS180121",
+            "123456","Aldo Ulises Colorado Díaz", "aldocoloradocd@gmail.com", "inscrito");
+    Estudiante_DAO_Implements estudiante_DAO = new Estudiante_DAO_Implements();
+    ObservableList<ReporteVO> reportesRecuperados = 
+            this.estudiante_DAO.recuperarReportes("2020-2021", 
+                    this.estudianteUsuario.getMatricula());
+    ProyectoVO proyectoRescatado = this.estudiante_DAO.recuperarProyecto
+        ("2020-2021", this.estudianteUsuario.getMatricula());
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         
         this.columnaNumeroReporte.setCellValueFactory(new PropertyValueFactory("numero"));
         this.columnaFechaCarga.setCellValueFactory(new PropertyValueFactory("fechaCarga"));
-        this.columnaHorasCubiertas.setCellValueFactory(new PropertyValueFactory("horasReportadas"));
+        this.columnaHorasCubiertas.setCellValueFactory(new PropertyValueFactory("horasReportadas"));        
+        this.tablaReportes.setItems(reportesRecuperados);
+        
+        setNombreProyecto();
+        calcularHoras();
 
-                
-        reportes = reporte_DAO.recuperarReportes();
-        tablaReportes.setItems(reportes);
+    }
+    
+    public void setNombreProyecto(){
+        String nombreProyectoRecuperado = proyectoRescatado.getNombre();
+        this.labelSetNombreProyecto.setText(nombreProyectoRecuperado);
     }    
+    
+     public void calcularHoras(){
+        int suma = 0;
+        //for(ListIterator<Tab> iterator = list.listIterator(); iterator.hasNext(); currentTab = iterator.next())
+        for (ReporteVO tab: reportesRecuperados){
+            suma+=tab.getHorasReportadas();
+        }
+        this.labelSetTotalHoras.setText(suma+"");
+    }
 
     @FXML
     private void subirNuevoReporte(ActionEvent event) {

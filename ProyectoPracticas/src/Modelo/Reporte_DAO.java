@@ -9,6 +9,9 @@ package modelo;
  *
  * @author ALDO
  */
-public class Reporte_DAO {
+
+public interface Reporte_DAO { 
+    //public boolean create(ReporteVO reporte);
+    //public boolean insertarArchivo(ReporteVO reporte);
     
 }
