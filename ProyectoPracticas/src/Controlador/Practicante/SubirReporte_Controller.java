@@ -5,6 +5,9 @@
  */
 package Controlador.Practicante;
 
+import Modelo.EstudianteVO;
+import Modelo.Estudiante_DAO_Implements;
+import Modelo.ProyectoVO;
 import Modelo.ReporteVO;
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import Modelo.Reporte_DAO_Implements;
+import javafx.scene.Node;
 
 /**
  * FXML Controller class
@@ -57,46 +61,75 @@ public class SubirReporte_Controller implements Initializable {
     private TableColumn<ReporteVO, Integer> columnaNumeroReporte;
     @FXML
     private TableColumn<ReporteVO, Integer> columnaFechaCarga;
-    
-    
-    ObservableList<ReporteVO> reportes = FXCollections.observableArrayList();
-    Reporte_DAO_Implements reporte_DAO = new Reporte_DAO_Implements();
+
+    public EstudianteVO estudianteUsuario = new EstudianteVO("ZS180121",
+            "123456", "Aldo Ulises Colorado Díaz", "aldocoloradocd@gmail.com", "inscrito");
+    Estudiante_DAO_Implements estudiante_DAO = new Estudiante_DAO_Implements();
+    ObservableList<ReporteVO> reportesRecuperados
+            = this.estudiante_DAO.recuperarReportes("2020-2021",
+                    this.estudianteUsuario.getMatricula());
+    ProyectoVO proyectoRescatado = this.estudiante_DAO.recuperarProyecto("2020-2021", this.estudianteUsuario.getMatricula());
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+
         this.columnaNumeroReporte.setCellValueFactory(new PropertyValueFactory("numero"));
         this.columnaFechaCarga.setCellValueFactory(new PropertyValueFactory("fechaCarga"));
         this.columnaHorasCubiertas.setCellValueFactory(new PropertyValueFactory("horasReportadas"));
+        this.tablaReportes.setItems(reportesRecuperados);
 
-                
-        reportes = reporte_DAO.recuperarReportes();
-        tablaReportes.setItems(reportes);
-    }    
+        setNombreProyecto();
+        calcularHoras();
+
+    }
+
+    public void setNombreProyecto() {
+        String nombreProyectoRecuperado = proyectoRescatado.getNombre();
+        this.labelSetNombreProyecto.setText(nombreProyectoRecuperado);
+    }
+
+    public void calcularHoras() {
+        int suma = 0;
+        for (ReporteVO tab : reportesRecuperados) {
+            suma += tab.getHorasReportadas();
+        }
+        this.labelSetTotalHoras.setText(suma + "");
+    }
 
     @FXML
     private void subirNuevoReporte(ActionEvent event) {
         
+        
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Practicante/SubirNuevoReporte.fxml"));
             Parent root = loader.load();
-            SubirNuevoReporteController controladorSubirNuevoReporte= loader.getController();
+            SubirNuevoReporteController controladorSubirNuevoReporte = loader.getController();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
-            stage.showAndWait();
+            stage.show();
 
         } catch (IOException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
+        
+        Node source = (Node) event.getSource();
+        Stage stagee = (Stage) source.getScene().getWindow();
+        stagee.close();
+        
     }
 
     @FXML
     private void regresar(ActionEvent event) {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
-    
+
 }

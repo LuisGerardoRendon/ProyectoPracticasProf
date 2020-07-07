@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="128.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Controlador.Practicante.ReporteCargado_Controller">
+<AnchorPane id="AnchorPane" prefHeight="128.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
    <children>
       <Label fx:id="labelReporteCargado" layoutX="246.0" layoutY="5.0" text="REPORTE CARGADO" />
       <Label fx:id="labelNombreArchivo" layoutX="131.0" layoutY="47.0" text="Nombre del Archivo:" />

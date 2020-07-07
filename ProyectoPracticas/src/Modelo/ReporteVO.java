@@ -22,28 +22,22 @@ public class ReporteVO {
     private String fechaFin;
     private int idExpediente;
 
-    public ReporteVO(int numero, int horasReportadas, String fechaCarga, String estado, File reporte, String fechaInicio, String fechaFin, int idExpediente) {
-        this.numero = numero;
+    public ReporteVO(int horasReportadas, String fechaCarga, String estado, File reporte, String fechaInicio, String fechaFin) {
         this.horasReportadas = horasReportadas;
         this.fechaCarga = fechaCarga;
         this.estado = estado;
         this.reporte = reporte;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        this.idExpediente = idExpediente;
     }
 
     public ReporteVO(int numero, int horasReportadas, String fechaCarga) {
         this.numero = numero;
         this.horasReportadas = horasReportadas;
         this.fechaCarga = fechaCarga;
-        estado = null;
-        reporte = null;
-        fechaInicio = null;
-        fechaFin = null;
-        idExpediente = 0;
     }
 
+   
     public void setNumero(int numero) {
         this.numero = numero;
     }
