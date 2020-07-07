@@ -19,7 +19,7 @@ public class EncargadoProyecto_DAO_Implemeents implements EncargadoProyecto_DAO 
 
     @Override
     public EncargadoProyectoVO recuperarEncargadoProyecto(ProyectoVO proyectoVO) {
-        String idProyecto = proyectoVO.getIdProyecto();
+        //String idProyecto = proyectoVO.getIdProyecto();
         String sql = "SELECT * FROM EncargadoProyecto WHERE idEncargadoProyecto = "
                 + proyectoVO.getIdEncargadoProyecto();
         EncargadoProyectoVO encargadoProyectoRecuperdo = new EncargadoProyectoVO();

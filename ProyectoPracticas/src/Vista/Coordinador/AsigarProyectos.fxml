@@ -17,7 +17,7 @@
                </font>
             </Label>
             <Label layoutX="34.0" layoutY="91.0" />
-            <TableView fx:id="tablaEstudiantes" layoutX="80.0" layoutY="90.0" prefHeight="500.0" prefWidth="300.0">
+            <TableView fx:id="tablaEstudiantes" layoutX="80.0" layoutY="90.0" onMouseClicked="#seleccionarEstudiante" prefHeight="500.0" prefWidth="300.0">
                <columns>
                   <TableColumn fx:id="columnaNombreEstudiantes" prefWidth="200.0" text="Nombre" />
                   <TableColumn fx:id="columnaMatricula" prefWidth="100.0" text="Matrícula" />
@@ -25,15 +25,15 @@
             </TableView>
             <Button fx:id="botonMostrarSolicitudes" layoutX="565.0" layoutY="360.0" mnemonicParsing="false" onAction="#mostrarSolicitudes" prefHeight="26.0" prefWidth="150.0" text="Mostrar Solicitudes" />
             <Button fx:id="botonAsignar" layoutX="1049.0" layoutY="679.0" mnemonicParsing="false" onAction="#asignar" prefHeight="26.0" prefWidth="150.0" text="Asignar" />
-            <TableView fx:id="tablaSolicitudes" layoutX="490.0" layoutY="90.0" prefHeight="250.0" prefWidth="300.0">
+            <TableView fx:id="tablaSolicitudes" layoutX="490.0" layoutY="90.0" onMouseClicked="#seleccionarProyectoSolicitado" prefHeight="250.0" prefWidth="300.0">
                <columns>
-                  <TableColumn fx:id="columnaNombreProyectoAsinado" prefWidth="250.0" text="Nombre" />
-                  <TableColumn fx:id="ColumnaCupoProyectoAsignado" prefWidth="50.0" text="Cupo" />
+                  <TableColumn fx:id="columnaNombreProyectoSolicitado" prefWidth="250.0" text="Nombre" />
+                  <TableColumn fx:id="columnaCupoProyectoSolicitado" prefWidth="50.0" text="Cupo" />
                </columns>
             </TableView>
             <Label layoutX="199.0" layoutY="58.0" text="Estudiantes" />
             <Label layoutX="584.0" layoutY="58.0" text="Proyectos Solicitados" />
-            <TableView fx:id="tablaProyectos" layoutX="900.0" layoutY="90.0" prefHeight="500.0" prefWidth="300.0">
+            <TableView fx:id="tablaProyectos" layoutX="900.0" layoutY="90.0" onMouseClicked="#seleccionarProyecto" prefHeight="500.0" prefWidth="300.0">
                <columns>
                   <TableColumn fx:id="columnaNombreProyecto" prefWidth="250.0" text="Nombre" />
                   <TableColumn fx:id="columnaCupoProyecto" prefWidth="50.0" text="Cupo" />

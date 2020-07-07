@@ -16,11 +16,11 @@ public class AsignacionVO {
   private String preriodo;
   private String nrcCurso;
   private float progreso;
-  private int idProyecto;
+  private String idProyecto;
   private String matriculaProfesor;
   private String matriculaEstudiante;
 
-    public AsignacionVO(int idAsignacion, String preriodo, String nrcCurso, float progreso, int idProyecto, String matriculaProfesor, String matriculaEstudiante) {
+    public AsignacionVO(int idAsignacion, String preriodo, String nrcCurso, float progreso, String idProyecto, String matriculaProfesor, String matriculaEstudiante) {
         this.idAsignacion = idAsignacion;
         this.preriodo = preriodo;
         this.nrcCurso = nrcCurso;
@@ -30,8 +30,8 @@ public class AsignacionVO {
         this.matriculaEstudiante = matriculaEstudiante;
     }
     
-     public AsignacionVO( String preriodo, String nrcCurso, float progreso, int idProyecto, String matriculaProfesor, String matriculaEstudiante) {
-   
+     public AsignacionVO( String preriodo, String nrcCurso, float progreso, String idProyecto, String matriculaProfesor, String matriculaEstudiante) {
+        this.idAsignacion=0;
         this.preriodo = preriodo;
         this.nrcCurso = nrcCurso;
         this.progreso = progreso;
@@ -101,7 +101,7 @@ public class AsignacionVO {
         return progreso;
     }
 
-    public int getIdProyecto() {
+    public String getIdProyecto() {
         return idProyecto;
     }
 
@@ -129,7 +129,7 @@ public class AsignacionVO {
         this.progreso = progreso;
     }
 
-    public void setIdProyecto(int idProyecto) {
+    public void setIdProyecto(String idProyecto) {
         this.idProyecto = idProyecto;
     }
 
@@ -139,7 +139,5 @@ public class AsignacionVO {
 
     public void setMatriculaEstudiante(String matriculaEstudiante) {
         this.matriculaEstudiante = matriculaEstudiante;
-    }
-    
- 
+    } 
 }

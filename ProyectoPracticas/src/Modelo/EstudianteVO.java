@@ -32,11 +32,6 @@ public class EstudianteVO {
         this.status = "null";
     }
 
-    public EstudianteVO(String matricula, String nombre) {
-        this.matricula = matricula;
-        this.nombre = nombre;
-    }
-
     public String getMatricula() {
         return matricula;
     }
@@ -80,11 +75,26 @@ public class EstudianteVO {
     public ObservableList<EstudianteVO> obtenerEstudiantes() {
         Estudiante_DAO_Implements estudianteDAOImp = new Estudiante_DAO_Implements();
         ObservableList<EstudianteVO> obs = FXCollections.observableArrayList();
-        obs = estudianteDAOImp.recuperaNombreMatricula();
+        obs = estudianteDAOImp.recuperarEstudiante();
+        return obs;
+    }
+
+    public ObservableList<ProyectoVO> obtenerProyectosSolicitados() {
+        Estudiante_DAO_Implements estudianteDAOImp = new Estudiante_DAO_Implements();
+        ObservableList<ProyectoVO> obs = FXCollections.observableArrayList();
+        obs = estudianteDAOImp.recuperarProyectosSeleccionado(matricula);
+        return obs;
+    }
+
+    public ObservableList<SolicitudVO> obtenerSolicitudes() {
+        Estudiante_DAO_Implements estudianteDAOImp = new Estudiante_DAO_Implements();
+        ObservableList<SolicitudVO> obs = FXCollections.observableArrayList();
+        obs = estudianteDAOImp.recuperarSolicitudes(matricula);
         return obs;
     }
 
     @Override
+
     public String toString() {
         return "EstudianteVO{" + "matricula=" + matricula + ", contrasenia=" + contrasenia + ", nombre=" + nombre + ", correoElectronico=" + correoElectronico + ", status=" + status + '}';
     }
@@ -114,9 +124,6 @@ public class EstudianteVO {
             return false;
         }
         if (!Objects.equals(this.correoElectronico, other.correoElectronico)) {
-            return false;
-        }
-        if (!this.status.equals(other.status)) {
             return false;
         }
         return true;

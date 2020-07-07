@@ -7,8 +7,8 @@ package Modelo;
 
 /**
  *
- * @author ALDO
+ * @author Daniel Pale
  */
-public class Reporte_DAO {
-    
+public interface Asignacion_DAO {
+    public boolean create(AsignacionVO asignacion); 
 }

@@ -3,17 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Modelo;
 
 import javafx.collections.ObservableList;
 
 /**
- * 
+ *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public interface Estudiante_DAO {
+
     public ObservableList<ReporteVO> recuperarReportes(String periodo, String matricula);
+
     public ProyectoVO recuperarProyecto(String periodo, String matricula);
-    public ObservableList<EstudianteVO> recuperaNombreMatricula();
-} 
+
+    public ObservableList<EstudianteVO> recuperarEstudiante();
+
+    public ObservableList<ProyectoVO> recuperarProyectosSeleccionado(String matricula);
+
+    public ObservableList<SolicitudVO> recuperarSolicitudes(String matricula);
+}

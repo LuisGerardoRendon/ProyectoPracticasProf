@@ -19,6 +19,10 @@ public class SolicitudVO {
         this.matricula = matricula;
     }
 
+    public SolicitudVO() {
+    }
+    
+
     public String getPeriodo() {
         return periodo;
     }

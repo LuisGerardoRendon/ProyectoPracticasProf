@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
  */
 public class ProyectoVO {
 
-    private int idProyecto;
+    private String idProyecto;
     private String nombre;
     private String descripcion;
     private int capacidadEstudiantes;
@@ -19,7 +19,7 @@ public class ProyectoVO {
     private int idOrganizacion;
     private int idEncargadoProyecto;
 
-    public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, int idProyecto, String status, int idOrganizacion, int idEncargadoProyecto) {
+    public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, String idProyecto, String status, int idOrganizacion, int idEncargadoProyecto) {
         this.idProyecto = idProyecto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -31,7 +31,7 @@ public class ProyectoVO {
     }
 
     public ProyectoVO(String nombre, String descripcion, int capacidadEstudiantes, int numEstudiantesAsignados, String status, int idOrganizacion, int idEncargadoProyecto) {
-        this.idProyecto = 0;
+        this.idProyecto = "";
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.capacidadEstudiantes = capacidadEstudiantes;
@@ -41,19 +41,14 @@ public class ProyectoVO {
         this.idEncargadoProyecto = idEncargadoProyecto;
     }
 
-    public ProyectoVO(String nombre, int capacidadEstudiantes) {
-        this.nombre = nombre;
-        this.capacidadEstudiantes = capacidadEstudiantes;
-    }
-
     public ProyectoVO() {
     }
 
-    public int getIdProyecto() {
+    public String getIdProyecto() {
         return idProyecto;
     }
 
-    public void setIdProyecto(int idProyecto) {
+    public void setIdProyecto(String idProyecto) {
         this.idProyecto = idProyecto;
     }
 
@@ -116,7 +111,7 @@ public class ProyectoVO {
     public ObservableList<ProyectoVO> obtenerProyectos() {
         ProyectoDAO_Implements proyectoDAOImp = new ProyectoDAO_Implements();
         ObservableList<ProyectoVO> obs = FXCollections.observableArrayList();
-        obs = proyectoDAOImp.recuperaNombreCupo();
+        obs = proyectoDAOImp.recuperarProyecto();
         return obs;
     }
 
@@ -153,9 +148,6 @@ public class ProyectoVO {
             return false;
         }
         if (this.numEstudiantesAsignados != other.numEstudiantesAsignados) {
-            return false;
-        }
-        if (!this.status.equals(other.status)) {
             return false;
         }
         if (!Objects.equals(this.idOrganizacion, other.idOrganizacion)) {
