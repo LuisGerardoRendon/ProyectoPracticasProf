@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -23,55 +25,65 @@ import javafx.collections.ObservableList;
  * @author ALDO
  */
 public class Reporte_DAO_Implements {
-    
-    public boolean create(ReporteVO reporte){
-        
+     
+   
+      
+                
+   public boolean create(ReporteVO reporte){
         boolean created =false;
-        Statement stm=null;
-        Connection con=null;
-        String sql="INSERT INTO reporte (numero,horasReportadas,fechaCarga,estado,fechaInicio,"
-                + "fechaFin, idExpediente) VALUES (NULL, '"+ reporte.getNumero() +
-                "','" + reporte.getHorasReportadas() + 
-                "','" + reporte.getFechaCarga() + 
-                "','" + reporte.getEstado() + 
-                "','" + reporte.getFechaInicio() + 
-                "','" + reporte.getFechaFin() + 
-                 "','1'" + ")";
-        ConexionBaseDatos cc=new ConexionBaseDatos();
         try{
+            
+            Connection con=null;
+            ConexionBD cc=new ConexionBD();
             con=cc.conectarMySQL();
-            stm=con.createStatement();
-            stm.execute(sql);
+            
+            String sql = "INSERT INTO reporte (numero,horasReportadas, fechaCarga, estado, reporte, "
+                        + "fechaInicio, fechaFin, idExpediente) VALUES (?, ?, ?, ?, ?, ?,?,?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, 0);
+            ps.setInt(2, reporte.getHorasReportadas());
+            ps.setString(3, reporte.getFechaCarga());
+            ps.setString(4, reporte.getEstado());
+            FileInputStream archivo = new FileInputStream(reporte.getReporte());
+            ps.setBlob(5, archivo);
+            ps.setString(6, reporte.getFechaInicio());
+            ps.setString(7, reporte.getFechaFin());
+            ps.setInt(8,1);
+            
+            ps.executeUpdate();
             created=true;
-            stm.close();
             con.close();
         }catch(SQLException e){
             System.out.println("Error al agregar el  reporte, clase Reporte_DAO_imp");
             e.printStackTrace();
-        }
+        }catch(FileNotFoundException ex) {
+            ex.printStackTrace();
+            }
         return created;
     }
     
     public boolean insertarArchivo(ReporteVO reporte) throws SQLException, FileNotFoundException{
         boolean insertado=false;
         try{
-            
+            File archivo=reporte.getReporte();
+            System.out.println(archivo.getName());
             Statement stm=null;
             Connection con=null;
             PreparedStatement myStmt=null;
-            ConexionBaseDatos cc=new ConexionBaseDatos();
+            ConexionBD cc=new ConexionBD();
             FileInputStream input=null;
-
-            String sql= "UPDATE Reporte SET reporte WHERE numero='"
+            con=cc.conectarMySQL();
+            
+            String sql= "UPDATE Reporte SET reporte=? WHERE numero='"
                     + reporte.getNumero()+"'";
-
+            
             myStmt = con.prepareStatement(sql);
-
-            File archivo=reporte.getReporte();
             input = new FileInputStream(archivo);
-            myStmt.setBinaryStream(1,input);
-
+            myStmt.setBinaryStream(1,input,(int)archivo.length());
             myStmt.executeUpdate();
+            insertado=true;
+            
         }catch(SQLException e){
             System.out.println("Error al insertar el archivo");
             e.printStackTrace();

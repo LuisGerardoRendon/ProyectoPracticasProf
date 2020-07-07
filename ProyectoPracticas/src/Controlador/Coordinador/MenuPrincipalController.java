@@ -56,6 +56,7 @@ public class MenuPrincipalController implements Initializable {
             stage.showAndWait();
 
         } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

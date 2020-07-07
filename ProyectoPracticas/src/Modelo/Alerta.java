@@ -56,6 +56,54 @@ public class Alerta {
         alerta.setContentText(texto);
         alerta.showAndWait();
     }
+    
+    public void alertaArchivoNoElegido(){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("ARCHIVO NO ELEGIDO");
+        alerta.setContentText("Por favor selecciona un archivo");
+        alerta.showAndWait();
+    }
+    
+    public void alertaExtencionDeArchivoInvalida(){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("EXTECCION DE ARCHIVO INVALIDA");
+        alerta.setContentText("Solo se permiten archivos .docx y .pdf");
+        alerta.showAndWait();
+    }
+    
+    public void alertaCamposIncompletosReporte(){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("DATOS INCOMPLETOS DEL REPORTE");
+        alerta.setContentText("Por favor llena todos los campos requeridos");
+        alerta.showAndWait();
+    }
+    
+    public void alertaFechaInicio(){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("FORMATO FECHA INICIO INVALIDO");
+        alerta.setContentText("Por favor ingresa un formato de fecha valido");
+        alerta.showAndWait();
+    }
+    
+    public void alertaFechaFin(){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("FORMATO FECHA FIN INVALIDO");
+        alerta.setContentText("Por favor ingresa un formato de fecha valido");
+        alerta.showAndWait();
+    }
+    
+    public void alertaFormatoHoras(){
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("FORMATO DE HORAS INCORRECTO");
+        alerta.setContentText("Por favor ingresa un formato de horas valido");
+        alerta.showAndWait();
+    }
 
 }
 
